@@ -1,0 +1,53 @@
+<h3>Your agents</h3><br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">AgentId</th>
+      <th scope="col">BossId</th>
+      <th scope="col">LastName</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">Strength</th>
+      <th scope="col">Income</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let agent of AgentList">
+      <td>{{agent.AgentId}}</td>
+      <td>{{agent.BossId}}</td>
+      <td>{{agent.LastName}}</td>
+      <td>{{agent.FirstName}}</td>
+      <td>{{agent.Strength}}</td>
+      <td>{{agent.Income}}</td>
+      <td>
+          <button type="button" (click)="deleteAgent(agent)">Delete Agent</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br><h3>Agents for recruitment</h3><br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">AgentId</th>
+      <th scope="col">BossId</th>
+      <th scope="col">LastName</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">Strength</th>
+      <th scope="col">Income</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let agent of AgentsForRecruitment">
+      <td>{{agent.AgentId}}</td>
+      <td>{{agent.BossId}}</td>
+      <td>{{agent.LastName}}</td>
+      <td>{{agent.FirstName}}</td>
+      <td>{{agent.Strength}}</td>
+      <td>{{agent.Income}}</td>
+    </tr>
+  </tbody>
+</table>

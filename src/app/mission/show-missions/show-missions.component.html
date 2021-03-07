@@ -1,0 +1,20 @@
+<h3>All missions</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">MissionId</th>
+      <th scope="col">Mission name</th>
+      <th scope="col">Difficulty Level</th>
+      <th scope="col">Loot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mission of MissionList">
+      <td>{{mission.MissionID}}</td>
+      <td>{{mission.MissionName}}</td>
+      <td>{{mission.DifficultyLevel}}</td>
+      <td>{{mission.Loot}}</td>
+    </tr>
+  </tbody>
+</table>
