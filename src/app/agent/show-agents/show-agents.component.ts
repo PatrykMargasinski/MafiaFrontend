@@ -1,4 +1,4 @@
-import { SharedService } from './../../shared.service';
+import { AgentService, Agent } from './../../shared/agent.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,33 +8,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowAgentsComponent implements OnInit {
 
-  constructor(private shared: SharedService) { }
-
-  AgentList:any=[];
-  AgentsForRecruitment:any=[];
+  constructor(private shared: AgentService) { }
+  AgentList:Agent[];
+  AgentsForRecruitment:Agent[];
 
   ngOnInit(): void {
     this.refreshAgentList();
+    this.refreshAgentToRecruitmentList();
   }
 
   refreshAgentList(){
-    this.shared.getAgentList().subscribe(data=>{
+    this.shared.getAvailableAgentsList().subscribe(data=>{
       this.AgentList=data;
     });
+  }
 
+  refreshAgentToRecruitmentList(){
     this.shared.getAgentsForRecruitmentList().subscribe(data=>{
       this.AgentsForRecruitment=data;
     });
   }
 
-  deleteAgent(agent: any): void
+  deleteAgent(agent: Agent): void
   {
-    console.log("Jestem")
     if(confirm('Are you sure??')){
-      this.shared.deleteAgent(agent.AgentId).subscribe(data=>{
-        alert(data.toString());
-        this.refreshAgentList();
-      })
+        agent.BossId=0;
+        this.shared.updateAgent(agent).subscribe(data=>{
+          alert(data.toString());
+          this.refreshAgentList();
+          this.refreshAgentToRecruitmentList();
+        })
+    }
+  }
+
+  recruitAgent(agent: Agent): void
+  {
+    if(confirm('Are you sure??')){
+        agent.BossId=1;
+        this.shared.updateAgent(agent).subscribe(data=>{
+          alert(data.toString());
+          this.refreshAgentList();
+          this.refreshAgentToRecruitmentList();
+        })
     }
   }
 }

@@ -1,3 +1,4 @@
+import { AgentService } from 'src/app/shared/agent.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,10 +8,14 @@ import { AgentComponent } from './agent/agent.component';
 import { MissionComponent } from './mission/mission.component';
 import { ShowMissionsComponent } from './mission/show-missions/show-missions.component';
 import { ShowAgentsComponent } from './agent/show-agents/show-agents.component';
-import{SharedService} from './shared.service';
+import {MissionService} from './shared/mission.service';
+import {BossService} from './shared/boss.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { BossComponent } from './boss/boss.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +23,17 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     AgentComponent,
     MissionComponent,
     ShowMissionsComponent,
-    ShowAgentsComponent
+    ShowAgentsComponent,
+    HeaderComponent,
+    FooterComponent,
+    BossComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [SharedService],
+  providers: [MissionService, BossService,AgentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

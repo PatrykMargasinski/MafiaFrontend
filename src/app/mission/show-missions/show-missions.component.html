@@ -1,20 +1,41 @@
-<h3>All missions</h3>
+<br><h3>Available missions</h3><br>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">MissionId</th>
       <th scope="col">Mission name</th>
       <th scope="col">Difficulty Level</th>
       <th scope="col">Loot</th>
+      <th scope="col">Options</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let mission of MissionList">
-      <td>{{mission.MissionID}}</td>
       <td>{{mission.MissionName}}</td>
       <td>{{mission.DifficultyLevel}}</td>
       <td>{{mission.Loot}}</td>
+      <td>
+        <button>Perform</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br><h3>Performing missions</h3><br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Mission name</th>
+      <th scope="col">Agent name</th>
+      <th scope="col">Chance of Success</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mission of PerformingMissionList">
+      <td>{{mission.MissionName}}</td>
+      <td>{{mission.AgentName}}</td>
+      <td>{{mission.ChanceOfSuccess}}</td>
     </tr>
   </tbody>
 </table>
