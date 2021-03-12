@@ -11,11 +11,13 @@ import { ShowAgentsComponent } from './agent/show-agents/show-agents.component';
 import {MissionService} from './shared/mission.service';
 import {BossService} from './shared/boss.service';
 
+
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BossComponent } from './boss/boss.component';
+import { PerformMissionComponent } from './mission/perform-mission/perform-mission.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { BossComponent } from './boss/boss.component';
     ShowAgentsComponent,
     HeaderComponent,
     FooterComponent,
-    BossComponent
+    BossComponent,
+    PerformMissionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [MissionService, BossService,AgentService],
   bootstrap: [AppComponent]

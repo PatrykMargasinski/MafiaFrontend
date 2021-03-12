@@ -1,6 +1,6 @@
 <br><h3>Available missions</h3><br>
 
-<table class="table table-striped">
+<table class="table table-striped text-center">
   <thead>
     <tr>
       <th scope="col">Mission name</th>
@@ -15,7 +15,7 @@
       <td>{{mission.DifficultyLevel}}</td>
       <td>{{mission.Loot}}</td>
       <td>
-        <button>Perform</button>
+        <button class="btn btn-secondary" (click)="orderToPerform(mission.MissionId)">Perform</button>
       </td>
     </tr>
   </tbody>
@@ -23,7 +23,7 @@
 
 <br><h3>Performing missions</h3><br>
 
-<table class="table table-striped">
+<table class="table table-striped text-center">
   <thead>
     <tr>
       <th scope="col">Mission name</th>

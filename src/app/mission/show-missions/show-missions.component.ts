@@ -1,6 +1,6 @@
 import { PerformingMissionService, PerformingMission } from '../../shared/performingmission.service';
 import { MissionService, Mission } from './../../shared/mission.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-show-missions',
@@ -9,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowMissionsComponent implements OnInit {
 
-  constructor(private missionShared: MissionService, private performingShared: PerformingMissionService,) { }
+  constructor(private missionShared: MissionService, private performingShared: PerformingMissionService) { }
 
   MissionList: Mission[]
   PerformingMissionList: PerformingMission[]
+  @Output() orderToPerformBtn = new EventEmitter<number>();
+
+  orderToPerform(missionId: number)
+  {
+    this.orderToPerformBtn.emit(missionId);
+  }
 
   ngOnInit(): void {
     this.refreshMissionList();
@@ -20,7 +26,7 @@ export class ShowMissionsComponent implements OnInit {
   }
 
   refreshMissionList(){
-    this.missionShared.getMissionList().subscribe(data=>{
+    this.missionShared.getAvailableMissionList().subscribe(data=>{
       this.MissionList=data;
     });
   }

@@ -14,6 +14,10 @@ export class PerformingMissionService {
   getPerformingMissionList():Observable<PerformingMission[]>{
     return this.http.get<PerformingMission[]>(this.APIUrl+'/performingmission');
   }
+
+  addPerformingMission(val: any){
+    return this.http.post(this.APIUrl+"/performingmission",val);
+  }
 }
 
 export interface PerformingMission

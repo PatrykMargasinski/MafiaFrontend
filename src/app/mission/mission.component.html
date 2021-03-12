@@ -1,1 +1,4 @@
-<app-show-missions></app-show-missions>
+
+<app-show-missions  *ngIf="ShowMissions" (orderToPerformBtn)="ShowMissions=false;OrderToPerformMission = true;proba($event)"></app-show-missions>
+
+<app-perform-mission *ngIf="OrderToPerformMission" (returnBtn)="ShowMissions=true;OrderToPerformMission = false" [ChosenMissionId]="ChosenMissionToPerform"></app-perform-mission>

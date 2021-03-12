@@ -15,6 +15,10 @@ export class MissionService {
     return this.http.get<Mission[]>(this.APIUrl+'/mission');
   }
 
+  getAvailableMissionList():Observable<Mission[]>{
+    return this.http.get<Mission[]>(this.APIUrl+'/GetAvailableMissions');
+  }
+
   addMission(val:Mission){
     return this.http.post(this.APIUrl+'/mission',val);
   }
@@ -33,6 +37,6 @@ export interface Mission
 {
   MissionId:number,
   MissionName:string,
-  DifficultyLeve:number,
+  DifficultyLevel:number,
   Loot:number
 }

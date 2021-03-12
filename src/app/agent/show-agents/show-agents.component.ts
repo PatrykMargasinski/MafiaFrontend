@@ -32,7 +32,7 @@ export class ShowAgentsComponent implements OnInit {
   deleteAgent(agent: Agent): void
   {
     if(confirm('Are you sure??')){
-        agent.BossId=0;
+        agent.BossId=null;
         this.shared.updateAgent(agent).subscribe(data=>{
           alert(data.toString());
           this.refreshAgentList();
