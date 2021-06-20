@@ -21,8 +21,8 @@ export class LoginComponent {
 
     this.http.post("http://localhost:53191/auth", credentials)
       .subscribe(response => {
-        const token = (<any>response).token;
-        localStorage.setItem("jwt", token);
+        const token = (<any>response).Token;
+        sessionStorage.setItem("jwtToken", token);
         this.invalidLogin = false;
         this.router.navigate(["/boss"]);
       }, err => {

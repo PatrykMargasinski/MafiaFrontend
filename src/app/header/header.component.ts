@@ -1,5 +1,6 @@
 import { Boss, BossService } from 'src/app/shared/boss.service';
 import { Component, OnInit } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private jwtHelper: JwtHelperService) { }
 
   isUserAuthenticated(){
-    const token: string = localStorage.getItem("jwt");
+    const token: string = sessionStorage.getItem("jwtToken");
+    if(token && !this.jwtHelper.isTokenExpired(token)){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  isToken(){
+    const token: string = sessionStorage.getItem("jwtToken");
     if(token){
       return true;
     }
@@ -21,7 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(){
-    localStorage.removeItem("jwt");
+    sessionStorage.removeItem("jwtToken");
   }
 
   ngOnInit(): void {

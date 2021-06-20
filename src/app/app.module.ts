@@ -10,7 +10,7 @@ import { ShowMissionsComponent } from './mission/show-missions/show-missions.com
 import { ShowAgentsComponent } from './agent/show-agents/show-agents.component';
 import {MissionService} from './shared/mission.service';
 import {BossService} from './shared/boss.service';
-
+import { JwtModule } from '@auth0/angular-jwt';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -21,6 +21,11 @@ import { PerformMissionComponent } from './mission/perform-mission/perform-missi
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+
+export function tokenGetter(){
+  return sessionStorage.getItem("jwtToken");
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +45,14 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:53191"],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [MissionService, BossService,AgentService],
   bootstrap: [AppComponent]
