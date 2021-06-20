@@ -8,14 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  boss: Boss = {} as Boss;
+  constructor() { }
 
-  constructor(private bossService:BossService) { }
+  isUserAuthenticated(){
+    const token: string = localStorage.getItem("jwt");
+    if(token){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  logOut(){
+    localStorage.removeItem("jwt");
+  }
 
   ngOnInit(): void {
-    this.bossService.getBoss().subscribe(data=>{
-      this.boss=data;
-    })
   }
 
 }

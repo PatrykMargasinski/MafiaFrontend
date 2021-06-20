@@ -13,12 +13,14 @@ import {BossService} from './shared/boss.service';
 
 
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BossComponent } from './boss/boss.component';
 import { PerformMissionComponent } from './mission/perform-mission/perform-mission.component';
-
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,9 @@ import { PerformMissionComponent } from './mission/perform-mission/perform-missi
     FooterComponent,
     BossComponent,
     PerformMissionComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

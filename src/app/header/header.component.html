@@ -1,22 +1,39 @@
 <header>
   <h3 class="d-flex justify-content-center">Mafia frontend</h3>
-  <h5 class="d-flex justify-content-center">Welcome godfather {{boss.FirstName}}. What are you looking for?</h5>
+  <h5 class="d-flex justify-content-center">Wanna play? Register, login and play!</h5>
 
   <nav class="navbar navbar-expand-sm bg-light navbar-dark">
   <ul class="navbar-nav">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isUserAuthenticated()">
+        <button routerLink=""
+        class="m-1 btn btn-light btn-outline-primary" Button>Home</button>
+      </li>
+      <li class="nav-item" *ngIf="!isUserAuthenticated()">
+        <button routerLink="login"
+        class="m-1 btn btn-light btn-outline-primary" Button>Login</button>
+      </li>
+      <li class="nav-item" *ngIf="!isUserAuthenticated()">
+        <button routerLink="register"
+        class="m-1 btn btn-light btn-outline-primary" Button>Register</button>
+      </li>
+      <li class="nav-item" *ngIf="isUserAuthenticated()">
         <button routerLink="boss"
         class="m-1 btn btn-light btn-outline-primary" Button>About boss</button>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isUserAuthenticated()">
           <button routerLink="agent"
           class="m-1 btn btn-light btn-outline-primary" Button>Agents</button>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isUserAuthenticated()">
           <button routerLink="mission"
           class="m-1 btn btn-light btn-outline-primary" Button>Missions</button>
+      </li>
+
+      <li class="nav-item" *ngIf="isUserAuthenticated()">
+        <button routerLink="" (click)="logOut()"
+        class="m-1 btn btn-dark btn-outline-primary" Button>Logout</button>
       </li>
   </ul>
   </nav>
