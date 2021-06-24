@@ -26,7 +26,8 @@ export class PerformMissionComponent implements OnInit {
   @Output() returnBtn = new EventEmitter();
 
   ngOnInit(): void {
-    this.agentShared.getAvailableAgentsList().subscribe(data=>{
+    const bossId=Number(sessionStorage.getItem("bossId"))
+    this.agentShared.getAvailableAgentsList(bossId).subscribe(data=>{
       this.AgentList=data
       this.AgentStringList=data.map(agent=>agent.LastName+" "+agent.FirstName)
     });

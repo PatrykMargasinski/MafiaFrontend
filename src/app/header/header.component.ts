@@ -21,18 +21,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  isToken(){
-    const token: string = sessionStorage.getItem("jwtToken");
-    if(token){
-      return true;
-    }
-    else{
-      return false;
-    }
-  }
-
   logOut(){
     sessionStorage.removeItem("jwtToken");
+    sessionStorage.removeItem("bossId");
   }
 
   ngOnInit(): void {

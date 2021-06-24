@@ -15,8 +15,8 @@ export class AgentService {
     return this.http.get<Agent[]>(this.APIUrl+'/agent');
   }
 
-  getAvailableAgentsList():Observable<Agent[]>{
-    return this.http.get<Agent[]>(this.APIUrl+'/GetAvailableAgents');
+  getAvailableAgentsList(bossId: number):Observable<Agent[]>{
+    return this.http.get<Agent[]>(this.APIUrl+'/GetAvailableAgents/'+bossId);
   }
 
   getAgentsForRecruitmentList():Observable<Agent[]>{

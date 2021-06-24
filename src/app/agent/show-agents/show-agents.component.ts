@@ -18,7 +18,8 @@ export class ShowAgentsComponent implements OnInit {
   }
 
   refreshAgentList(){
-    this.shared.getAvailableAgentsList().subscribe(data=>{
+    const bossId = Number(sessionStorage.getItem("bossId"))
+    this.shared.getAvailableAgentsList(bossId).subscribe(data=>{
       this.AgentList=data;
     });
   }
@@ -44,7 +45,7 @@ export class ShowAgentsComponent implements OnInit {
   recruitAgent(agent: Agent): void
   {
     if(confirm('Are you sure??')){
-        agent.BossId=1;
+        agent.BossId=Number(sessionStorage.getItem("bossId"));
         this.shared.updateAgent(agent).subscribe(data=>{
           alert(data.toString());
           this.refreshAgentList();

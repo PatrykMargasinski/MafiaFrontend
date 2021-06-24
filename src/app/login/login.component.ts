@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   invalidLogin: boolean;
+  errorMessage: string;
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -19,14 +20,17 @@ export class LoginComponent {
       'password': form.value.password
     }
 
-    this.http.post("http://localhost:53191/auth", credentials)
+    this.http.post("http://localhost:53191/login", credentials)
       .subscribe(response => {
         const token = (<any>response).Token;
         sessionStorage.setItem("jwtToken", token);
+        const bossId = (<any>response).BossId;
+        sessionStorage.setItem("bossId", bossId);
         this.invalidLogin = false;
         this.router.navigate(["/boss"]);
       }, err => {
         this.invalidLogin = true;
+        this.errorMessage = err.error;
       })
   }
 }
