@@ -11,9 +11,9 @@ export class BossService {
 
   constructor(private http:HttpClient) { }
 
-  getBoss():Observable<Boss>
+  getBoss(id:number):Observable<Boss>
   {
-    return this.http.get<Boss>(this.APIUrl+'/boss');
+    return this.http.get<Boss>(this.APIUrl+'/boss/'+id);
   }
 }
 

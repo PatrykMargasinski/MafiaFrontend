@@ -10,14 +10,21 @@ import { ShowMissionsComponent } from './mission/show-missions/show-missions.com
 import { ShowAgentsComponent } from './agent/show-agents/show-agents.component';
 import {MissionService} from './shared/mission.service';
 import {BossService} from './shared/boss.service';
-
+import { JwtModule } from '@auth0/angular-jwt';
 
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BossComponent } from './boss/boss.component';
 import { PerformMissionComponent } from './mission/perform-mission/perform-mission.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+
+export function tokenGetter(){
+  return sessionStorage.getItem("jwtToken");
+}
 
 @NgModule({
   declarations: [
@@ -30,12 +37,22 @@ import { PerformMissionComponent } from './mission/perform-mission/perform-missi
     FooterComponent,
     BossComponent,
     PerformMissionComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:53191"],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [MissionService, BossService,AgentService],
   bootstrap: [AppComponent]

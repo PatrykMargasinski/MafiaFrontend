@@ -12,7 +12,7 @@ export class BossComponent implements OnInit {
   constructor(private bossService: BossService) { }
 
   ngOnInit(): void {
-    this.bossService.getBoss().subscribe(data=>{
+    this.bossService.getBoss(Number(sessionStorage.getItem("bossId"))).subscribe(data=>{
       this.boss=data;
     })
   }
