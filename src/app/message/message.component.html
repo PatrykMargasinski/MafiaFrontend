@@ -1,0 +1,2 @@
+<app-show-message *ngIf="showMessages" (swapEvent)="showMessages=!showMessages;"></app-show-message>
+<app-send-message *ngIf="!showMessages" (swapEvent)="showMessages=!showMessages;"></app-send-message>

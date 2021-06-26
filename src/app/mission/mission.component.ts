@@ -12,7 +12,7 @@ export class MissionComponent implements OnInit {
 
   constructor() { }
 
-  proba(missionId: number){
+  savePerformingMissionId(missionId: number){
     this.ChosenMissionToPerform=missionId
   }
 
