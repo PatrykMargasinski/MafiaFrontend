@@ -8,18 +8,11 @@ import { Message, MessageService } from '../shared/message.service';
 })
 export class MessageComponent implements OnInit {
 
-  constructor(private shared: MessageService) { }
-  MessageList:Message[];
+  showMessages: boolean=true;
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.refreshMessageList()
-  }
-
-  refreshMessageList(){
-    const bossId = Number(sessionStorage.getItem("bossId"))
-    this.shared.getAllMessages(bossId).subscribe(data=>{
-      this.MessageList=data;
-    });
   }
 
 }

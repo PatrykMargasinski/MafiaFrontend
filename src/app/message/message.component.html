@@ -1,18 +1,2 @@
-<br><h3>Messages</h3><br>
-
-<table class="table table-striped text-center">
-  <thead>
-    <tr>
-      <th scope="col">From</th>
-      <th scope="col">Content</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let message of MessageList">
-      <td>{{message.FromBoss}}</td>
-      <td>{{mission.Content}}</td>
-      <td>X</td>
-    </tr>
-  </tbody>
-</table>
+<app-show-message *ngIf="showMessages" (swapEvent)="showMessages=!showMessages;"></app-show-message>
+<app-send-message *ngIf="!showMessages" (swapEvent)="showMessages=!showMessages;"></app-send-message>

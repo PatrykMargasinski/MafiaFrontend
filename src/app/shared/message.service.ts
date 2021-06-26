@@ -14,11 +14,19 @@ export class MessageService {
   getAllMessages(bossId: number):Observable<Message[]>{
     return this.http.get<Message[]>(this.APIUrl+'/messageTo/'+bossId);
   }
+
+  deleteMessage(val:number){
+    return this.http.delete(this.APIUrl+'/message/'+val);
+  }
+
+  sendMessage(val: any){
+    return this.http.post(this.APIUrl+'/message/',val);
+  }
 }
 
 export interface Message
 {
-  MessageId: number
+  MessageId: number,
   ToBoss:string,
   FromBoss:string,
   Content:string
