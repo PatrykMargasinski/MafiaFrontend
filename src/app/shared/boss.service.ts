@@ -20,6 +20,17 @@ export class BossService {
   {
     return this.http.get<number>(this.APIUrl+'/boss/GetNameById/'+name);
   }
+
+  getBossIdByPlayerNick(nick:string):Observable<number>
+  {
+    return this.http.get<number>(this.APIUrl+'/boss/GetIdByPlayerNick/'+nick);
+  }
+
+  getBossId(str: string, isBossName: boolean):Observable<number>
+  {
+    if(isBossName==true) return this.getBossIdByName(str.replace(' ',''))
+    else return this.getBossIdByPlayerNick(str)
+  }
 }
 
 export interface Boss

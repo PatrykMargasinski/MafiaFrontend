@@ -11,10 +11,10 @@ import { MessageService } from 'src/app/shared/message.service';
 export class SendMessageComponent implements OnInit {
 
   constructor(private mesService: MessageService, private bossService: BossService) { }
-
+  option: string
   @Output() swapEvent = new EventEmitter<number>();
 
-  return()
+  returnToMessageList()
   {
     this.swapEvent.emit();
   }
@@ -22,13 +22,10 @@ export class SendMessageComponent implements OnInit {
   sendMessage(form: NgForm)
   {
     let bossId:number;
-    this.bossService.getBossIdByName(form.value.name.replace(' ','')).subscribe(x=>
+    const isBossName = (this.option==="Boss name");
+    this.bossService.getBossId(form.value.name, isBossName).subscribe(x=>
     {
       bossId=Number(x);
-      if(bossId===undefined)
-      {
-        alert("Boss not found"); return;
-      }
       const mes={
         ToBossId:bossId,
         FromBossId:sessionStorage.getItem("bossId"),
@@ -36,14 +33,15 @@ export class SendMessageComponent implements OnInit {
       }
       this.mesService.sendMessage(mes).subscribe(y=>{
         alert("Message sent");
-        this.return();
+        this.returnToMessageList();
       })
     }, err => {
-      alert("Something went wrong...");
+      alert(err.error);
     });
   }
 
   ngOnInit(): void {
+    this.option="Boss name"
   }
 
 }
