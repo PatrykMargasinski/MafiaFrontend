@@ -15,6 +15,11 @@ export class BossService {
   {
     return this.http.get<Boss>(this.APIUrl+'/boss/'+id);
   }
+
+  getBossIdByName(name:string):Observable<number>
+  {
+    return this.http.get<number>(this.APIUrl+'/boss/GetNameById/'+name);
+  }
 }
 
 export interface Boss

@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     console.log(credentials);
     this.http.post("http://localhost:5000/register", credentials)
     .subscribe(data=>{
-      alert(data.toString());
+      alert("Registration finished. You get 5000$ and 3 agents. That's how your journey begins.");
       this.registerError=false
       this.router.navigate(["/login"]);
     }, err=>{

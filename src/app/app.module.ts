@@ -21,6 +21,9 @@ import { PerformMissionComponent } from './mission/perform-mission/perform-missi
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { MessageComponent } from './message/message.component';
+import { ShowMessageComponent } from './message/show-message/show-message.component';
+import { SendMessageComponent } from './message/send-message/send-message.component';
 
 export function tokenGetter(){
   return sessionStorage.getItem("jwtToken");
@@ -40,6 +43,9 @@ export function tokenGetter(){
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    MessageComponent,
+    ShowMessageComponent,
+    SendMessageComponent,
   ],
   imports: [
     BrowserModule,
