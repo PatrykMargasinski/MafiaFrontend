@@ -2,7 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
-## Development server
+## Required installation
+
+- Node JS
+- package manager (npm, yarn)
+- Angular CLI (npm install -g @angular/cli)
+- IDE (not required): The application can be run by command line, but for better code management use an IDE, for example the VS code
+
+## Run development server
+
+Before server run use `npm install` to install all dependencies saved in package.json if it is your first run.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 

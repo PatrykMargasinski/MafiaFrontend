@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PerformingMissionService {
 
-  readonly APIUrl="http://localhost:53191";
+  readonly APIUrl="http://localhost:5000";
 
   constructor(private http:HttpClient) { }
 
@@ -23,7 +23,7 @@ export class PerformingMissionService {
 export interface PerformingMission
 {
   PerformingMissionId: number,
-  MissionName: string,
+  Name: string,
   AgentName: string,
   ChanceOfSuccess: number
 }

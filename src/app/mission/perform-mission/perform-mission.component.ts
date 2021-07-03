@@ -34,7 +34,7 @@ export class PerformMissionComponent implements OnInit {
 
     this.missionShared.getMissionList().subscribe(data=>{
       this.MissionList=data
-      this.MissionStringList=data.map(mission=>mission.MissionName)
+      this.MissionStringList=data.map(mission=>mission.Name)
     });
   }
 
@@ -68,7 +68,7 @@ export class PerformMissionComponent implements OnInit {
     )
     {
       this.ShowInformationAboutMission=true;
-      this.ChosenMissionInstance=this.MissionList.filter(mission=>mission.MissionName==this.ChosenMission)[0]
+      this.ChosenMissionInstance=this.MissionList.filter(mission=>mission.Name==this.ChosenMission)[0]
       this.ChosenAgentInstance=this.AgentList.filter(agent=>(agent.LastName+" "+agent.FirstName) == this.ChosenAgent)[0]
       this.ChanceOfSuccess=Math.ceil(((11-this.ChosenMissionInstance.DifficultyLevel)+(this.ChosenAgentInstance.Strength))*100/22)
 

@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class MissionService {
 
-  readonly APIUrl="http://localhost:53191";
+  readonly APIUrl="http://localhost:5000";
 
   constructor(private http:HttpClient) { }
 
@@ -36,7 +36,7 @@ export class MissionService {
 export interface Mission
 {
   MissionId:number,
-  MissionName:string,
+  Name:string,
   DifficultyLevel:number,
   Loot:number
 }

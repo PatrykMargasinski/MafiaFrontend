@@ -20,7 +20,7 @@ export class LoginComponent {
       'password': form.value.password
     }
 
-    this.http.post("http://localhost:53191/login", credentials)
+    this.http.post("http://localhost:5000/login", credentials)
       .subscribe(response => {
         const token = (<any>response).Token;
         sessionStorage.setItem("jwtToken", token);

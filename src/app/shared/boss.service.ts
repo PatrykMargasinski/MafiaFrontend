@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class BossService {
 
-  readonly APIUrl="http://localhost:53191";
+  readonly APIUrl="http://localhost:5000";
 
   constructor(private http:HttpClient) { }
 

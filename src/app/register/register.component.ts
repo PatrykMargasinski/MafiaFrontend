@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
       'AgentNames': [form.value.agent1, form.value.agent2, form.value.agent3]
     }
     console.log(credentials);
-    this.http.post("http://localhost:53191/register", credentials)
+    this.http.post("http://localhost:5000/register", credentials)
     .subscribe(data=>{
       alert(data.toString());
       this.registerError=false
