@@ -9,9 +9,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Angular CLI (npm install -g @angular/cli)
 - IDE (not required): The application can be run by command line, but for better code management use an IDE, for example the VS code
 
-## Run development server
+## Before start
 
 Before server run use `npm install` to install all dependencies saved in package.json if it is your first run.
+
+Next copy and change or change `src/environments/environment.copy.ts` name to `environment.ts`. 
+
+In `environment.ts` file change APIhost to your host ex. http://localhost:5000
+
+## Run development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
