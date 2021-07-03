@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
       'AgentNames': [form.value.agent1, form.value.agent2, form.value.agent3]
     }
     console.log(credentials);
-    this.http.post("http://localhost:5000/register", credentials)
+    this.http.post(environment.APIEndpoint + "/register", credentials)
     .subscribe(data=>{
       alert("Registration finished. You get 5000$ and 3 agents. That's how your journey begins.");
       this.registerError=false
