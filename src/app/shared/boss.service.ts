@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.copy';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class BossService {
 
   getBossIdByName(name:string):Observable<number>
   {
-    return this.http.get<number>(this.APIUrl+'/boss/GetNameById/'+name);
+    return this.http.get<number>(this.APIUrl+'/boss/idByName/'+name.trim());
   }
 
   getBossIdByPlayerNick(nick:string):Observable<number>

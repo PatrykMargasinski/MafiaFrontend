@@ -32,9 +32,12 @@ export class PerformMissionComponent implements OnInit {
       this.AgentStringList=data.map(agent=>agent.LastName+" "+agent.FirstName)
     });
 
-    this.missionShared.getMissionList().subscribe(data=>{
+
+    this.missionShared.getAvailableMissionList().subscribe(data=>{
       this.MissionList=data
       this.MissionStringList=data.map(mission=>mission.Name)
+      this.ChosenMission=this.MissionList
+      .filter(mission=>mission.Id==this.ChosenMissionId)[0].Name
     });
   }
 
@@ -48,23 +51,23 @@ export class PerformMissionComponent implements OnInit {
     this.performingShared.addPerformingMission
     (
       {
-        MissionId: this.ChosenMissionInstance.MissionId,
-        AgentId: this.ChosenAgentInstance.AgentId
+        MissionId: this.ChosenMissionInstance.Id,
+        AgentId: this.ChosenAgentInstance.Id
       }
     )
     .subscribe(data=>{
       alert(data.toString());
+      this.backToShowMission();
     })
-    this.backToShowMission();
   }
 
   checkIfProgramShouldShowInformationAboutPerform()
   {
     if(
-      this.ChosenAgent!=null &&
-      this.ChosenMission!=null &&
-      this.ChosenAgent!='--Select--' &&
-      this.ChosenMission!='--Select--'
+      this.ChosenAgent != null &&
+      this.ChosenMission != null &&
+      this.ChosenAgent != '--Select--' &&
+      this.ChosenMission != '--Select--'
     )
     {
       this.ShowInformationAboutMission=true;

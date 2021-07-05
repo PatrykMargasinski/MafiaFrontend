@@ -24,7 +24,6 @@ import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
 import { ShowMessageComponent } from './message/show-message/show-message.component';
 import { SendMessageComponent } from './message/send-message/send-message.component';
-import { environment } from './../environments/environment';
 export function tokenGetter(){
   return sessionStorage.getItem("jwtToken");
 }

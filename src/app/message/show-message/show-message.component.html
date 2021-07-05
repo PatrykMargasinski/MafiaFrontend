@@ -13,8 +13,7 @@
     <tr *ngFor="let message of MessageList">
       <td>{{message.FromBoss}}</td>
       <td>{{message.Content}}</td>
-      <td><button class="btn btn-success" (click)="deleteMessage(message.MessageId)">Delete</button></td>
+      <td><button class="btn btn-success" (click)="deleteMessage(message.Id)">Delete</button></td>
     </tr>
   </tbody>
 </table>
-<div *ngIf="MessageList.length==0" class="d-flex justify-content-center"><br><h4>No message</h4><br></div>
