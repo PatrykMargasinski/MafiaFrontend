@@ -13,7 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Before server run use `npm install` to install all dependencies saved in package.json if it is your first run.
 
-Next copy and change or change `src/environments/environment.copy.ts` name to `environment.ts`. 
+Next copy and change or change `src/environments/environment.ts` name to `environment.ts`. 
 
 In `environment.ts` file change APIhost to your host ex. http://localhost:5000
 
