@@ -36,7 +36,7 @@ export class MissionService {
 
 export interface Mission
 {
-  MissionId:number,
+  Id:number,
   Name:string,
   DifficultyLevel:number,
   Loot:number

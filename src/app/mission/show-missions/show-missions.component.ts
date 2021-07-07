@@ -1,6 +1,7 @@
 import { PerformingMissionService, PerformingMission } from '../../shared/performingmission.service';
 import { MissionService, Mission } from './../../shared/mission.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AgentService } from 'src/app/shared/agent.service';
 
 @Component({
   selector: 'app-show-missions',
@@ -9,7 +10,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ShowMissionsComponent implements OnInit {
 
-  constructor(private missionShared: MissionService, private performingShared: PerformingMissionService) { }
+  constructor(
+    private missionShared: MissionService, 
+    private performingShared: PerformingMissionService,
+    private agentShared: AgentService
+    ) { }
 
   MissionList: Mission[]
   PerformingMissionList: PerformingMission[]
@@ -17,7 +22,15 @@ export class ShowMissionsComponent implements OnInit {
 
   orderToPerform(missionId: number)
   {
-    this.orderToPerformBtn.emit(missionId);
+    this.agentShared.getAvailableAgentsList(Number(sessionStorage.getItem("bossId"))).subscribe(
+      x=>
+      {
+        if(x.length==0)
+          alert("No available agent")
+        else
+          this.orderToPerformBtn.emit(missionId);
+      }
+    )
   }
 
   ngOnInit(): void {

@@ -22,7 +22,6 @@ export class RegisterComponent implements OnInit {
       'BossLastName': form.value.lastname,
       'AgentNames': [form.value.agent1, form.value.agent2, form.value.agent3]
     }
-    console.log(credentials);
     this.http.post(environment.APIEndpoint + "/register", credentials)
     .subscribe(data=>{
       alert("Registration finished. You get 5000$ and 3 agents. That's how your journey begins.");

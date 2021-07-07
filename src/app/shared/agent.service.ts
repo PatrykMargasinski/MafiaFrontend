@@ -39,7 +39,7 @@ export class AgentService {
 
 export interface Agent
 {
-  AgentId: number,
+  Id: number,
   BossId: number,
   LastName: string,
   FirstName: string,

@@ -13,7 +13,7 @@ export class PerformingMissionService {
   constructor(private http:HttpClient) { }
 
   getPerformingMissionList():Observable<PerformingMission[]>{
-    return this.http.get<PerformingMission[]>(this.APIUrl+'/performingmission');
+    return this.http.get<PerformingMission[]>(this.APIUrl+'/performingmission/byBossId/'+sessionStorage.getItem("bossId"));
   }
 
   addPerformingMission(val: any){
@@ -26,5 +26,6 @@ export interface PerformingMission
   PerformingMissionId: number,
   Name: string,
   AgentName: string,
-  ChanceOfSuccess: number
+  ChanceOfSuccess: number,
+  CompletionTime: string
 }
