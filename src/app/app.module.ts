@@ -17,13 +17,16 @@ import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BossComponent } from './boss/boss.component';
-import { PerformMissionComponent } from './mission/perform-mission/perform-mission.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
 import { ShowMessageComponent } from './message/show-message/show-message.component';
 import { SendMessageComponent } from './message/send-message/send-message.component';
+import { MissionCardComponent } from './mission/show-missions/mission-card/mission-card.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgentTableComponent } from './agent/agent-table/agent-table.component';
+import { InProgressMissionListComponent } from './mission/in-progress-mission-list/in-progress-mission-list.component';
 export function tokenGetter(){
   return sessionStorage.getItem("jwtToken");
 }
@@ -38,13 +41,15 @@ export function tokenGetter(){
     HeaderComponent,
     FooterComponent,
     BossComponent,
-    PerformMissionComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
     MessageComponent,
     ShowMessageComponent,
     SendMessageComponent,
+    MissionCardComponent,
+    AgentTableComponent,
+    InProgressMissionListComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ export function tokenGetter(){
         allowedDomains: ["localhost"],
         disallowedRoutes: []
       }
-    })
+    }),
+    NgbModule
   ],
   providers: [MissionService, BossService,AgentService],
   bootstrap: [AppComponent]

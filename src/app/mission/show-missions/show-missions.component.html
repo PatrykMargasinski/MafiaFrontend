@@ -1,41 +1,19 @@
-<br><h3>Available missions</h3><br>
-
-<table class="table table-striped text-center">
-  <thead>
-    <tr>
-      <th scope="col">Mission name</th>
-      <th scope="col">Difficulty Level</th>
-      <th scope="col">Loot</th>
-      <th scope="col">Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let mission of MissionList">
-      <td>{{mission.Name}}</td>
-      <td>{{mission.DifficultyLevel}}</td>
-      <td>{{mission.Loot}}</td>
-      <td>
-        <button class="btn btn-secondary" (click)="orderToPerform(mission.Id)">Perform</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<br><h3>Performing missions</h3><br>
-
-<table class="table table-striped text-center">
-  <thead>
-    <tr>
-      <th scope="col">Mission name</th>
-      <th scope="col">Agent name</th>
-      <th scope="col">Chance of Success</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let mission of PerformingMissionList">
-      <td>{{mission.Name}}</td>
-      <td>{{mission.AgentName}}</td>
-      <td>{{mission.ChanceOfSuccess}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-4" *ngFor="let mission of missions">
+    <app-mission-card [mission]="mission" [content]="content" (getMissionId)="changeMissionId($event)"></app-mission-card>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Choose agent</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  <app-agent-table [missionId]="this.missionId" (someEvent)="closeAndRefresh()"></app-agent-table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</ng-template>

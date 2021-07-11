@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowMissionsComponent } from './show-missions.component';
+import { AgentTableComponent } from './agent-table.component';
 
-describe('ShowMissionsComponent', () => {
-  let component: ShowMissionsComponent;
-  let fixture: ComponentFixture<ShowMissionsComponent>;
+describe('AgentTableComponent', () => {
+  let component: AgentTableComponent;
+  let fixture: ComponentFixture<AgentTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowMissionsComponent ]
+      declarations: [ AgentTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShowMissionsComponent);
+    fixture = TestBed.createComponent(AgentTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,6 +22,4 @@ describe('ShowMissionsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-
 });

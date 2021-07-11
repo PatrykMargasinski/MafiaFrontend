@@ -1,7 +1,7 @@
-import { PerformingMissionService, PerformingMission } from '../../shared/performingmission.service';
-import { MissionService, Mission } from './../../shared/mission.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AgentService } from 'src/app/shared/agent.service';
+import { MissionService } from './../../shared/mission.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Mission from 'src/app/models/mission.model';
 
 @Component({
   selector: 'app-show-missions',
@@ -10,43 +10,24 @@ import { AgentService } from 'src/app/shared/agent.service';
 })
 export class ShowMissionsComponent implements OnInit {
 
+  @Output() refresher = new EventEmitter()
+  @Input() missions: Mission[]
+  missionId: number = 10
+
   constructor(
-    private missionShared: MissionService, 
-    private performingShared: PerformingMissionService,
-    private agentShared: AgentService
-    ) { }
-
-  MissionList: Mission[]
-  PerformingMissionList: PerformingMission[]
-  @Output() orderToPerformBtn = new EventEmitter<number>();
-
-  orderToPerform(missionId: number)
-  {
-    this.agentShared.getAvailableAgentsList(Number(sessionStorage.getItem("bossId"))).subscribe(
-      x=>
-      {
-        if(x.length==0)
-          alert("No available agent")
-        else
-          this.orderToPerformBtn.emit(missionId);
-      }
-    )
-  }
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
-    this.refreshMissionList();
-    this.refreshPerformingMissionList();
+
   }
 
-  refreshMissionList(){
-    this.missionShared.getAvailableMissionList().subscribe(data=>{
-      this.MissionList=data;
-    });
+  closeAndRefresh() {
+    this.modalService.dismissAll();
+    this.refresher.next();
   }
 
-  refreshPerformingMissionList(){
-    this.performingShared.getPerformingMissionList().subscribe(data=>{
-      this.PerformingMissionList=data;
-    });
+  changeMissionId(missionId: number){
+    this.missionId = missionId
   }
 }

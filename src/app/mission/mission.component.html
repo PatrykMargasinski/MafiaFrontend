@@ -1,4 +1,4 @@
-
-<app-show-missions  *ngIf="ShowMissions" (orderToPerformBtn)="ShowMissions=false;OrderToPerformMission = true;savePerformingMissionId($event)"></app-show-missions>
-
-<app-perform-mission *ngIf="OrderToPerformMission" (returnBtn)="ShowMissions=true;OrderToPerformMission = false" [ChosenMissionId]="ChosenMissionToPerform"></app-perform-mission>
+<br><h3>Available missions</h3><br>
+<app-show-missions [missions]="missions" (refresher)="refreshAll()"></app-show-missions>
+<br><h3>In progress</h3><br>
+<app-in-progress-mission-list *ngIf="inProgress" [inProgress]="inProgress" (refresher)="refreshAll()"></app-in-progress-mission-list>
