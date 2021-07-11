@@ -8,23 +8,23 @@ import { environment } from 'src/environments/environment';
 })
 export class BossService {
 
-  readonly APIUrl = environment.APIEndpoint
+  readonly APIUrl = environment.APIEndpoint + '/boss'
 
   constructor(private http:HttpClient) { }
 
   getBoss(id:number):Observable<Boss>
   {
-    return this.http.get<Boss>(this.APIUrl+'/boss/'+id);
+    return this.http.get<Boss>(this.APIUrl+'/'+id);
   }
 
   getBossIdByName(name:string):Observable<number>
   {
-    return this.http.get<number>(this.APIUrl+'/boss/idByName/'+name.trim());
+    return this.http.get<number>(this.APIUrl+ '/' + name.trim() + '/id');
   }
 
   getBossIdByPlayerNick(nick:string):Observable<number>
   {
-    return this.http.get<number>(this.APIUrl+'/boss/GetIdByPlayerNick/'+nick);
+    return this.http.get<number>(this.APIUrl+'/GetIdByPlayerNick/'+nick);
   }
 
   getBossId(str: string, isBossName: boolean):Observable<number>
