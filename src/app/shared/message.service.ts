@@ -30,6 +30,7 @@ export interface Message
   MessageId: number,
   ToBoss:string,
   FromBoss:string,
-  Content:string
+  Content:string,
+  Date: string
 }
 

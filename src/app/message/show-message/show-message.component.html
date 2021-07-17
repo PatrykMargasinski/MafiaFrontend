@@ -4,15 +4,28 @@
 <table class="table table-striped text-center">
   <thead>
     <tr>
-      <th scope="col">From</th>
-      <th scope="col">Content</th>
+      <th scope="col">
+        <div>
+          <input [(ngModel)]="ReceiverFilterText" class="form-control"
+                (keyup)="filterList()" placeholder="Filter">
+        </div>
+        From
+      </th>
+      <th scope="col">
+        <div>
+          <input [(ngModel)]="ContentFilterText" class="form-control"
+                (keyup)="filterList()" placeholder="Filter">
+        </div>
+        Content</th>
+      <th scope="col">Receive date</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let message of MessageList">
+    <tr *ngFor="let message of MessageFilteredList">
       <td>{{message.FromBoss}}</td>
       <td>{{message.Content}}</td>
+      <td>{{message.ReceiveDate}}</td>
       <td><button class="btn btn-success" (click)="deleteMessage(message.Id)">Delete</button></td>
     </tr>
   </tbody>
