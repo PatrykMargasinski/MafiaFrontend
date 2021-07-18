@@ -11,7 +11,8 @@ export class ShowMessageComponent implements OnInit {
   MessageList: Message[];
   MessageFilteredList: Message[];
   ReceiverFilterText: string = "";
-  ContentFilterText: string = "";
+  PageNumbers: number[];
+  MessageIdsForActions: number[];
 
   @Output() swapEvent = new EventEmitter<number>();
 
@@ -19,22 +20,52 @@ export class ShowMessageComponent implements OnInit {
     this.refreshMessageList()
   }
 
+  stringDateConvert(stringDate: string) {
+    var d = new Date("2015-03-25T12:00:00-06:30");
+    let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+    let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
+    let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+    return `${da}-${mo}-${ye}`
+  }
+
   showSendMessageWindow(){
     this.swapEvent.emit();
   }
 
   refreshMessageList(){
+    this.MessageIdsForActions=new Array<number>();
     const bossId = Number(sessionStorage.getItem("bossId"))
-    this.shared.getAllMessages(bossId).subscribe(data=>{
+    this.shared.getMessageCount(bossId).subscribe(data=>{
+      let bossMessagesCount = data;
+      this.PageNumbers=new Array<number>();
+      for(let i=0;i<bossMessagesCount;i+=5)
+      {
+        this.PageNumbers.push(i)
+      }
+    })
+    this.getNextPage(0,5)
+  }
+
+  getNextPage(fromRange: number, toRange: number)
+  {
+    const bossId = Number(sessionStorage.getItem("bossId"))
+    this.shared.getAllMessagesRange(bossId, fromRange, toRange, this.ReceiverFilterText.toLowerCase())
+    .subscribe(data=>{
       this.MessageList=data;
       this.MessageFilteredList=data;
     });
   }
 
-  filterList(){
-    this.MessageFilteredList=this.MessageList.filter(x=>
-      x.FromBoss.toLowerCase().includes(this.ReceiverFilterText.toLowerCase()) &&
-      x.Content.toLowerCase().includes(this.ContentFilterText.toLowerCase()))
+  checkboxClicked(ev, MessageId){
+    if(ev.target.checked==true)
+      this.MessageIdsForActions.push(MessageId);
+    else
+    {
+      const index = this.MessageIdsForActions.indexOf(MessageId);
+      if (index > -1) {
+        this.MessageIdsForActions.splice(index, 1);
+      }
+    }
   }
 
   deleteMessage(messageId: number): void{
@@ -43,6 +74,22 @@ export class ShowMessageComponent implements OnInit {
         alert(data.toString());
         this.refreshMessageList();
       });
+    }
+  }
+
+  deleteSelected(): void{
+    if(this.MessageIdsForActions.length==0)
+    {
+      confirm('There is no selected messages')
+    }
+    else
+    {
+      if(confirm('Do you want to delete '+this.MessageIdsForActions.length+' messages??')){
+        this.shared.deleteMessages(this.MessageIdsForActions).subscribe(data=>{
+          alert(data.toString());
+          this.refreshMessageList();
+        });
+      }
     }
   }
 }
