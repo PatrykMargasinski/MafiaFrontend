@@ -13,6 +13,7 @@ export class ShowMessageComponent implements OnInit {
   ReceiverFilterText: string = "";
   PageNumbers: number[];
   MessageIdsForActions: number[];
+  OnlyUnseen:boolean;
 
   @Output() swapEvent = new EventEmitter<number>();
 
@@ -21,7 +22,7 @@ export class ShowMessageComponent implements OnInit {
   }
 
   stringDateConvert(stringDate: string) {
-    var d = new Date("2015-03-25T12:00:00-06:30");
+    var d = new Date(stringDate);
     let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
     let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
     let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
@@ -49,7 +50,7 @@ export class ShowMessageComponent implements OnInit {
   getNextPage(fromRange: number, toRange: number)
   {
     const bossId = Number(sessionStorage.getItem("bossId"))
-    this.shared.getAllMessagesRange(bossId, fromRange, toRange, this.ReceiverFilterText.toLowerCase())
+    this.shared.getAllMessages(bossId, fromRange, toRange, this.ReceiverFilterText.toLowerCase(), this.OnlyUnseen)
     .subscribe(data=>{
       this.MessageList=data;
       this.MessageFilteredList=data;
@@ -66,6 +67,15 @@ export class ShowMessageComponent implements OnInit {
         this.MessageIdsForActions.splice(index, 1);
       }
     }
+  }
+
+  showContent(messageId: number){
+    this.shared.getMessageContent(messageId).subscribe(x=>
+      {
+        alert(x)
+        this.refreshMessageList()
+      }
+    );
   }
 
   deleteMessage(messageId: number): void{

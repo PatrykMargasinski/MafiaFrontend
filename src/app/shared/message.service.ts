@@ -12,16 +12,12 @@ export class MessageService {
 
   constructor(private http:HttpClient) { }
 
-  getAllMessages(bossId: number):Observable<Message[]>{
-    return this.http.get<Message[]>(this.APIUrl+'/messageTo/'+bossId);
-  }
-
   getMessageCount(bossId: number):Observable<number>{
     return this.http.get<number>(this.APIUrl+'/messageCount/'+bossId);
   }
 
-  getAllMessagesRange(bossId: number, fromRange: number, toRange:number, bossNameFilter):Observable<Message[]>{
-    return this.http.get<Message[]>(this.APIUrl+'/messageToRange/'+bossId+'?fromRange='+fromRange+'&toRange='+toRange+'&bossNameFilter='+bossNameFilter);
+  getAllMessages(bossId: number, fromRange: number, toRange:number, bossNameFilter, onlyUnseen: boolean):Observable<Message[]>{
+    return this.http.get<Message[]>(this.APIUrl+'/messageTo/'+bossId+'?fromRange='+fromRange+'&toRange='+toRange+'&bossNameFilter='+bossNameFilter+'&onlyUnseen='+onlyUnseen);
   }
 
   deleteMessage(val:number){
@@ -35,6 +31,10 @@ export class MessageService {
   sendMessage(val: any){
     return this.http.post(this.APIUrl+'/message/',val);
   }
+
+  getMessageContent(val: number){
+    return this.http.get(this.APIUrl+'/messageContent/'+val);
+  }
 }
 
 export interface Message
@@ -42,7 +42,8 @@ export interface Message
   MessageId: number,
   ToBoss:string,
   FromBoss:string,
-  Content:string,
-  Date: string
+  Subject:string,
+  Date: string,
+  Seen: boolean
 }
 

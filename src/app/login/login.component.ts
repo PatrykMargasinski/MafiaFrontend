@@ -31,7 +31,11 @@ export class LoginComponent {
         this.router.navigate(["/boss"]);
       }, err => {
         this.invalidLogin = true;
-        this.errorMessage = err.error;
+        if(err.name=='HttpErrorResponse')
+          this.errorMessage='Website is unable to connect with server'
+        else{
+          this.errorMessage = err.error;
+        }
       })
   }
 }
