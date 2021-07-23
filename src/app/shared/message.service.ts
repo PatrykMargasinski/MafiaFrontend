@@ -13,11 +13,12 @@ export class MessageService {
   constructor(private http:HttpClient) { }
 
   getMessageCount(bossId: number):Observable<number>{
-    return this.http.get<number>(this.APIUrl+'/messageCount/'+bossId);
+    return this.http.get<number>(this.APIUrl+'/message/count?bossId='+bossId);
   }
 
   getAllMessages(bossId: number, fromRange: number, toRange:number, bossNameFilter, onlyUnseen: boolean):Observable<Message[]>{
-    return this.http.get<Message[]>(this.APIUrl+'/messageTo/'+bossId+'?fromRange='+fromRange+'&toRange='+toRange+'&bossNameFilter='+bossNameFilter+'&onlyUnseen='+onlyUnseen);
+    return this.http.get<Message[]>(this.APIUrl+'/message/to?bossId='+bossId+'&fromRange='+fromRange+'&toRange='+toRange+
+    (bossNameFilter===''?'':'&bossNameFilter='+bossNameFilter));
   }
 
   deleteMessage(val:number){
@@ -33,7 +34,7 @@ export class MessageService {
   }
 
   getMessageContent(val: number){
-    return this.http.get(this.APIUrl+'/messageContent/'+val);
+    return this.http.get(this.APIUrl+'/message/content?id='+val);
   }
 }
 

@@ -20,7 +20,7 @@ export class SendMessageComponent implements OnInit {
   {
     if(text.length>=3)
     {
-      this.bossService.findBossNamesStartingWith(text).subscribe(x=>{this.similarBossNames=x;console.log(this.similarBossNames);})
+      this.bossService.findBossNamesStartingWith(text).subscribe(x=>{this.similarBossNames=x;})
     }
     else
       this.similarBossNames=[]

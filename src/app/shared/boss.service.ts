@@ -24,7 +24,7 @@ export class BossService {
 
   findBossNamesStartingWith(name:string):Observable<string[]>
   {
-    return this.http.get<string[]>(environment.APIEndpoint+'/bossSimilarNames?name='+ name);
+    return this.http.get<string[]>(this.APIUrl+'/similarNames?name='+ name);
   }
 }
 
