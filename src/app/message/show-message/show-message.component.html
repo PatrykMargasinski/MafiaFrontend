@@ -8,6 +8,9 @@
     <label class="col-6 text-right" for="unseenCheckbox">Only unseen messages:</label>
     <input id="unseenCheckbox" class="form-check-input col-6" (input)="refreshMessageList()"  [(ngModel)]="OnlyUnseen" type="checkbox">
   </div>
+  <div class="col-sm-4">
+    <button class="btn btn-danger" (click)="clearFilters()">Clear filters</button>
+  </div>
 </div>
 
 <table class="table table-striped text-center mt-12">

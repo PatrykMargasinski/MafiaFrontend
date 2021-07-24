@@ -33,6 +33,13 @@ export class ShowMessageComponent implements OnInit {
     this.swapEvent.emit();
   }
 
+  clearFilters(){
+    console.log("HEJ")
+    this.ReceiverFilterText="";
+    this.OnlyUnseen=false;
+    this.refreshMessageList();
+  }
+
   refreshMessageList(){
     this.MessageIdsForActions=new Array<number>();
     const bossId = Number(sessionStorage.getItem("bossId"))
