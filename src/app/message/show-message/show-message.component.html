@@ -1,5 +1,9 @@
 <br><h3>Messages</h3><br>
-<button class="btn btn-success mb-sm-1" (click)="showSendMessageWindow()">Prepare message</button>
+
+<button class="btn btn-success mb-1" (click)="showSendMessageWindow()">Prepare message</button>
+<div>
+<button class="btn btn-secondary mb-3" (click)="refreshMessageList()">Refresh</button>
+</div>
 <div class="row mb-5">
   <div class="col-sm-4">
     <input [(ngModel)]="ReceiverFilterText" (input)="refreshMessageList()" class="form-control" placeholder="Search by boss name">
