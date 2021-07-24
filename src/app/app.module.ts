@@ -11,7 +11,7 @@ import { ShowAgentsComponent } from './agent/show-agents/show-agents.component';
 import {MissionService} from './shared/mission.service';
 import {BossService} from './shared/boss.service';
 import { JwtModule } from '@auth0/angular-jwt';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
@@ -54,6 +54,7 @@ export function tokenGetter(){
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatAutocompleteModule,
     HttpClientModule,
     FormsModule,
     JwtModule.forRoot({

@@ -22,15 +22,9 @@ export class BossService {
     return this.http.get<number>(this.APIUrl+ '/' + name.trim() + '/id');
   }
 
-  getBossIdByPlayerNick(nick:string):Observable<number>
+  findBossNamesStartingWith(name:string):Observable<string[]>
   {
-    return this.http.get<number>(this.APIUrl+'/GetIdByPlayerNick/'+nick);
-  }
-
-  getBossId(str: string, isBossName: boolean):Observable<number>
-  {
-    if(isBossName==true) return this.getBossIdByName(str.replace(' ',''))
-    else return this.getBossIdByPlayerNick(str)
+    return this.http.get<string[]>(this.APIUrl+'/similarNames?name='+ name);
   }
 }
 

@@ -3,23 +3,27 @@
 <br><br>
 
 <div class=" border border-dark p-4">
-	<label>Select player by:</label>
-	<select class="form-control" [(ngModel)]="option">
-		<option>
-			Boss name
-		</option>
-	</select>
-	<br>
 	<form class="form-signin container-fluid col-12 align-middle justify-content-center mt-2" #sendForm="ngForm" (ngSubmit)="sendMessage(sendForm)">
 		<div class="">
 			<div class="form-group mt-12">
 				<label>To</label>
-				<input class="form-control" id="name" name="name" placeholder="{{option}} required" ngModel class="form-control">
+				<input (input)="findSimilarBossNames(sendForm.value.name)" class="form-control" id="name" name="name" 
+				placeholder="Boss fullname required" ngModel class="form-control" list="nameHelper" [matAutocomplete]="auto">
+				<mat-autocomplete #auto="matAutocomplete">
+					<mat-option *ngFor="let bossName of similarBossNames" [value]="bossName">
+					  {{bossName}}
+					</mat-option>
+				</mat-autocomplete>
+			</div>
+
+			<div class="form-group mt-12">
+				<label for="subject">Subject</label>
+				<textarea class="form-control" id="subject" placeholder="Subject required" name="subject" ngModel class="form-control" rows="1" cols="50" maxlength="20"></textarea>
 			</div>
 
 			<div class="form-group mt-12">
 				<label for="content">Content</label>
-				<textarea class="form-control" id="content" placeholder="Content required" name="content" ngModel class="form-control" rows="8"></textarea>
+				<textarea class="form-control" id="content" placeholder="Content required" name="content" ngModel class="form-control" rows="8" cols="50" maxlength="1000"></textarea>
 			</div>
 
 			<div class="text-center mt-3">

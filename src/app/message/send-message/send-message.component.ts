@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { from } from 'rxjs';
 import { BossService } from 'src/app/shared/boss.service';
 import { MessageService } from 'src/app/shared/message.service';
 
@@ -11,8 +12,19 @@ import { MessageService } from 'src/app/shared/message.service';
 export class SendMessageComponent implements OnInit {
 
   constructor(private mesService: MessageService, private bossService: BossService) { }
-  option: string
   @Output() swapEvent = new EventEmitter<number>();
+
+  similarBossNames: string[]
+
+  findSimilarBossNames(text: string)
+  {
+    if(text.length>=3)
+    {
+      this.bossService.findBossNamesStartingWith(text).subscribe(x=>{this.similarBossNames=x;})
+    }
+    else
+      this.similarBossNames=[]
+  }
 
   returnToMessageList()
   {
@@ -22,14 +34,14 @@ export class SendMessageComponent implements OnInit {
   sendMessage(form: NgForm)
   {
     let bossId:number;
-    const isBossName = (this.option==="Boss name");
-    this.bossService.getBossId(form.value.name, isBossName).subscribe(x=>
+    this.bossService.getBossIdByName(form.value.name).subscribe(x=>
     {
       bossId=Number(x);
       const mes={
-        ToBossId:bossId,
-        FromBossId:sessionStorage.getItem("bossId"),
-        Content:form.value.content
+        ToBossId: bossId,
+        FromBossId: sessionStorage.getItem("bossId"),
+        Content: form.value.content,
+        Subject: form.value.subject
       }
       this.mesService.sendMessage(mes).subscribe(y=>{
         alert("Message sent");
@@ -41,7 +53,6 @@ export class SendMessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.option="Boss name"
   }
 
 }
