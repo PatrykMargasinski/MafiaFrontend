@@ -1,15 +1,12 @@
 <br><h3>Messages</h3><br>
 <button class="btn btn-success mb-sm-1" (click)="showSendMessageWindow()">Prepare message</button>
 <div class="row mb-5">
-  <div class="col-sm-4 mt-12">
-    <button class="btn btn-secondary col-sm-6" (click)="refreshMessageList()">Search</button>
+  <div class="col-sm-4">
+    <input [(ngModel)]="ReceiverFilterText" (input)="refreshMessageList()" class="form-control" placeholder="Search by boss name">
   </div>
   <div class="col-sm-4">
-    <input [(ngModel)]="ReceiverFilterText" class="form-control" placeholder="Search by boss name">
-  </div>
-  <div class="col-sm-4">
-    <label class="col-6 text-right" for="unseenCheckbox">Unseen messages:</label>
-    <input id="unseenCheckbox" class="form-check-input col-6"  [(ngModel)]="OnlyUnseen" type="checkbox" (change)="refreshMessageList()">
+    <label class="col-6 text-right" for="unseenCheckbox">Only unseen messages:</label>
+    <input id="unseenCheckbox" class="form-check-input col-6" (input)="refreshMessageList()"  [(ngModel)]="OnlyUnseen" type="checkbox">
   </div>
 </div>
 

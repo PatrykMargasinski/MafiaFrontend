@@ -13,7 +13,7 @@ export class ShowMessageComponent implements OnInit {
   ReceiverFilterText: string = "";
   PageNumbers: number[];
   MessageIdsForActions: number[];
-  OnlyUnseen:boolean;
+  OnlyUnseen:boolean = false;
 
   @Output() swapEvent = new EventEmitter<number>();
 
@@ -50,7 +50,12 @@ export class ShowMessageComponent implements OnInit {
   getNextPage(fromRange: number, toRange: number)
   {
     const bossId = Number(sessionStorage.getItem("bossId"))
-    this.shared.getAllMessages(bossId, fromRange, toRange, this.ReceiverFilterText.toLowerCase(), this.OnlyUnseen)
+    this.shared.getAllMessages(
+      bossId, 
+      fromRange, 
+      toRange, 
+      this.ReceiverFilterText.toLowerCase(),
+      this.OnlyUnseen)
     .subscribe(data=>{
       this.MessageList=data;
       this.MessageFilteredList=data;

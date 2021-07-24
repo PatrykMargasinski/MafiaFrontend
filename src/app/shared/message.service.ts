@@ -17,8 +17,8 @@ export class MessageService {
   }
 
   getAllMessages(bossId: number, fromRange: number, toRange:number, bossNameFilter, onlyUnseen: boolean):Observable<Message[]>{
-    return this.http.get<Message[]>(this.APIUrl+'/message/to?bossId='+bossId+'&fromRange='+fromRange+'&toRange='+toRange+
-    (bossNameFilter===''?'':'&bossNameFilter='+bossNameFilter));
+    return this.http.get<Message[]>(this.APIUrl+'/message/to?bossId=' + bossId + '&fromRange=' + fromRange + '&toRange=' + toRange
+     + '&onlyUnseen=' + onlyUnseen + (bossNameFilter==='' ? '' : '&bossNameFilter=' + bossNameFilter));
   }
 
   deleteMessage(val:number){
