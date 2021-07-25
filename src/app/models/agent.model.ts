@@ -5,5 +5,7 @@ export default interface Agent
   LastName: string,
   FirstName: string,
   Strength: number,
+  Dexterity: number,
+  Intelligence: number,
   Income: number
 }
