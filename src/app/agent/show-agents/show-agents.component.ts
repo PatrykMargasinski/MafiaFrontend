@@ -1,6 +1,5 @@
-import { AgentService } from './../../shared/agent.service';
+import { AgentService, Agent } from './../../shared/agent.service';
 import { Component, OnInit } from '@angular/core';
-import Agent from 'src/app/models/agent.model';
 
 @Component({
   selector: 'app-show-agents',
@@ -20,7 +19,7 @@ export class ShowAgentsComponent implements OnInit {
 
   refreshAgentList(){
     const bossId = Number(sessionStorage.getItem("bossId"))
-    this.shared.getAvailableAgents(bossId).subscribe(data=>{
+    this.shared.getAvailableAgentsList(bossId).subscribe(data=>{
       this.AgentList=data;
     });
   }
