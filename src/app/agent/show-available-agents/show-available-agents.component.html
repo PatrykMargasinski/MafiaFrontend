@@ -5,7 +5,7 @@
     <tr>
       <th scope="col">LastName</th>
       <th scope="col">FirstName</th>
-      <th scope="col">Strength</th>
+      <th scope="col">Statistics</th>
       <th scope="col">Income</th>
       <th scope="col">Options</th>
     </tr>
@@ -14,7 +14,7 @@
     <tr *ngFor="let agent of AgentList">
       <td>{{agent.LastName}}</td>
       <td>{{agent.FirstName}}</td>
-      <td>{{agent.Strength}}</td>
+      <td>{{agent.Strength}}/{{agent.Dexterity}}/{{agent.Intelligence}}</td>
       <td>{{agent.Income}}</td>
       <td>
           <button class="btn btn-danger" (click)="deleteAgent(agent)">Dismiss</button>
