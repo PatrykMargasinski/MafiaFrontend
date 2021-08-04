@@ -18,11 +18,15 @@ export class AgentService {
   }
 
   getAvailableAgents(bossId: number): Observable<Agent[]> {
-    return this.http.get<Agent[]>(this.APIUrl + '/GetAvailableAgents/' + bossId);
+    return this.http.get<Agent[]>(this.APIUrl + '/available/' + bossId);
   }
 
-  getAgentsForRecruitmentList(): Observable<Agent[]> {
-    return this.http.get<Agent[]>(this.APIUrl + '/GetAgentsForRecruitment');
+  getAgentsOnMission(bossId: number): Observable<Agent[]> {
+    return this.http.get<Agent[]>(this.APIUrl + '/onMission/' + bossId);
+  }
+
+  getAgentsForSaleList(): Observable<Agent[]> {
+    return this.http.get<Agent[]>(this.APIUrl + '/forSale');
   }
 
   addAgent(val: Agent) {

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AgentComponent } from './agent/agent.component';
 import { MissionComponent } from './mission/mission.component';
 import { ShowMissionsComponent } from './mission/show-missions/show-missions.component';
-import { ShowAgentsComponent } from './agent/show-agents/show-agents.component';
+import { ShowAvailableAgentsComponent } from './agent/show-available-agents/show-available-agents.component';
 import {MissionService} from './shared/mission.service';
 import {BossService} from './shared/boss.service';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -25,8 +25,9 @@ import { ShowMessageComponent } from './message/show-message/show-message.compon
 import { SendMessageComponent } from './message/send-message/send-message.component';
 import { MissionCardComponent } from './mission/show-missions/mission-card/mission-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AgentTableComponent } from './agent/agent-table/agent-table.component';
 import { InProgressMissionListComponent } from './mission/in-progress-mission-list/in-progress-mission-list.component';
+import { ShowAgentsOnMissionComponent } from './agent/show-agents-on-mission/show-agents-on-mission.component';
+import { AgentsForSaleComponent } from './agent/agents-for-sale/agents-for-sale.component';
 export function tokenGetter(){
   return sessionStorage.getItem("jwtToken");
 }
@@ -37,7 +38,7 @@ export function tokenGetter(){
     AgentComponent,
     MissionComponent,
     ShowMissionsComponent,
-    ShowAgentsComponent,
+    ShowAvailableAgentsComponent,
     HeaderComponent,
     FooterComponent,
     BossComponent,
@@ -48,8 +49,9 @@ export function tokenGetter(){
     ShowMessageComponent,
     SendMessageComponent,
     MissionCardComponent,
-    AgentTableComponent,
-    InProgressMissionListComponent
+    InProgressMissionListComponent,
+    ShowAgentsOnMissionComponent,
+    AgentsForSaleComponent
   ],
   imports: [
     BrowserModule,

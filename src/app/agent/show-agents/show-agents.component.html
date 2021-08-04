@@ -5,9 +5,7 @@
     <tr>
       <th scope="col">LastName</th>
       <th scope="col">FirstName</th>
-      <th scope="col">Strength</th>
-      <th scope="col">Intelligence</th>
-      <th scope="col">Dexterity</th>
+      <th scope="col">Statistics</th>
       <th scope="col">Income</th>
       <th scope="col">Options</th>
     </tr>
@@ -16,9 +14,7 @@
     <tr *ngFor="let agent of AgentList">
       <td>{{agent.LastName}}</td>
       <td>{{agent.FirstName}}</td>
-      <td>{{agent.Strength}}</td>
-      <td>{{agent.Intelligence}}</td>
-      <td>{{agent.Dexterity}}</td>
+      <td>{{agent.Strength}}/{{agent.Dexterity}}/{{agent.Intelligence}}</td>
       <td>{{agent.Income}}</td>
       <td>
           <button class="btn btn-danger" (click)="deleteAgent(agent)">Dismiss</button>
@@ -35,8 +31,6 @@
       <th scope="col">LastName</th>
       <th scope="col">FirstName</th>
       <th scope="col">Strength</th>
-      <th scope="col">Intelligence</th>
-      <th scope="col">Dexterity</th>
       <th scope="col">Income</th>
       <th scope="col">Options</th>
     </tr>
@@ -46,8 +40,6 @@
       <td>{{agent.LastName}}</td>
       <td>{{agent.FirstName}}</td>
       <td>{{agent.Strength}}</td>
-      <td>{{agent.Intelligence}}</td>
-      <td>{{agent.Dexterity}}</td>
       <td>{{agent.Income}}</td>
       <td>
         <button class="btn btn-success" (click)="recruitAgent(agent)">Recruit</button>

@@ -8,13 +8,21 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { GuardService } from './shared/guard.service';
 import { MessageComponent } from './message/message.component';
+import { ShowAvailableAgentsComponent } from './agent/show-available-agents/show-available-agents.component';
+import { ShowAgentsOnMissionComponent } from './agent/show-agents-on-mission/show-agents-on-mission.component';
+import { AgentsForSaleComponent } from './agent/agents-for-sale/agents-for-sale.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'mission',component:MissionComponent, canActivate: [GuardService]},
-  {path:'agent',component:AgentComponent, canActivate: [GuardService]},
+  {path:'agent',component:AgentComponent, canActivate: [GuardService], children:
+  [
+    {path: 'availableAgents', component: ShowAvailableAgentsComponent},
+    {path: 'agentsOnMission', component: ShowAgentsOnMissionComponent},
+    {path: 'agentsForSale', component: AgentsForSaleComponent},
+  ]},
   {path:'boss',component:BossComponent, canActivate: [GuardService]},
   {path:'message',component:MessageComponent, canActivate: [GuardService]}
 ];
