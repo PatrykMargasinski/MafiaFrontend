@@ -12,6 +12,7 @@ export class GuardService implements CanActivate{
   canActivate(){
     const token = sessionStorage.getItem("jwtToken");
     if(token && !this.jwtHelper.isTokenExpired(token)){
+      console.log(this.jwtHelper.decodeToken(token))
       return true
     }
     else{ 
