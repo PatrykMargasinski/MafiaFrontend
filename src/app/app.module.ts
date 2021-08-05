@@ -64,13 +64,13 @@ export function tokenGetter(){
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["localhost"],
+        allowedDomains: ["localhost:53191"],
         disallowedRoutes: []
       }
     }),
     NgbModule
   ],
-  providers: [MissionService, BossService,AgentService],
+  providers: [MissionService, BossService, AgentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
