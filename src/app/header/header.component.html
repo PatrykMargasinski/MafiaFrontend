@@ -36,6 +36,11 @@
         <button routerLink="message"
         class="m-1 btn btn-light btn-outline-primary" Button>Messages</button>
       </li>
+      
+      <li class="nav-item" *ngIf="isUserAuthenticated()">
+        <button routerLink="auth"
+        class="m-1 btn btn-light btn-outline-primary" Button>Account settings</button>
+      </li>
 
       <li class="nav-item" *ngIf="isUserAuthenticated()">
         <button routerLink="" (click)="logOut()"

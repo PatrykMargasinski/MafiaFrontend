@@ -11,6 +11,7 @@ import { MessageComponent } from './message/message.component';
 import { ShowAvailableAgentsComponent } from './agent/show-available-agents/show-available-agents.component';
 import { ShowAgentsOnMissionComponent } from './agent/show-agents-on-mission/show-agents-on-mission.component';
 import { AgentsForSaleComponent } from './agent/agents-for-sale/agents-for-sale.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
     {path: 'agentsForSale', component: AgentsForSaleComponent},
   ]},
   {path:'boss',component:BossComponent, canActivate: [GuardService]},
-  {path:'message',component:MessageComponent, canActivate: [GuardService]}
+  {path:'message',component:MessageComponent, canActivate: [GuardService]},
+  {path:'auth',component: AuthComponent, canActivate: [GuardService]}
 ];
 
 @NgModule({

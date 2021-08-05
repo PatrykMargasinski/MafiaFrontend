@@ -28,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InProgressMissionListComponent } from './mission/in-progress-mission-list/in-progress-mission-list.component';
 import { ShowAgentsOnMissionComponent } from './agent/show-agents-on-mission/show-agents-on-mission.component';
 import { AgentsForSaleComponent } from './agent/agents-for-sale/agents-for-sale.component';
+import { AuthComponent } from './auth/auth.component';
 export function tokenGetter(){
   return sessionStorage.getItem("jwtToken");
 }
@@ -51,7 +52,8 @@ export function tokenGetter(){
     MissionCardComponent,
     InProgressMissionListComponent,
     ShowAgentsOnMissionComponent,
-    AgentsForSaleComponent
+    AgentsForSaleComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,8 @@ export class LoginComponent {
         sessionStorage.setItem("jwtToken", token);
         const bossId = (<any>response).BossId;
         sessionStorage.setItem("bossId", bossId);
+        const playerId = (<any>response).PlayerId;
+        sessionStorage.setItem("playerId", playerId);
         this.invalidLogin = false;
         this.router.navigate(["/boss"]);
       }, err => {
