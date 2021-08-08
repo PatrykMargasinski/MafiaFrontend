@@ -29,6 +29,9 @@ import { InProgressMissionListComponent } from './mission/in-progress-mission-li
 import { ShowAgentsOnMissionComponent } from './agent/show-agents-on-mission/show-agents-on-mission.component';
 import { AgentsForSaleComponent } from './agent/agents-for-sale/agents-for-sale.component';
 import { AuthComponent } from './auth/auth.component';
+import { ShowReportsComponent } from './message/show-reports/show-reports.component';
+import { AgentTableComponent } from './agent/agent-table/agent-table.component';
+
 export function tokenGetter(){
   return sessionStorage.getItem("jwtToken");
 }
@@ -53,7 +56,10 @@ export function tokenGetter(){
     InProgressMissionListComponent,
     ShowAgentsOnMissionComponent,
     AgentsForSaleComponent,
-    AuthComponent
+    AuthComponent,
+    ShowReportsComponent,
+    AgentTableComponent
+
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@ export class AgentTableComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    console.log("HEJ")
     this.getAgents();
   }
 
@@ -29,6 +30,7 @@ export class AgentTableComponent implements OnInit {
     const bossId = Number(sessionStorage.getItem("bossId"))
     this.agentService.getAvailableAgents(bossId).subscribe(data=>{
       this.agents = data
+      console.log(this.agents)
     })
   }
 

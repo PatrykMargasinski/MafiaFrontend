@@ -1,6 +1,6 @@
 <br><h3>Messages</h3><br>
 
-<button class="btn btn-success mb-1" (click)="showSendMessageWindow()">Prepare message</button>
+<button class="btn btn-success mb-1" (click)="navigateToSendMessageComponent()">Prepare message</button>
 <div>
 <button class="btn btn-secondary mb-3" (click)="refreshMessageList()">Refresh</button>
 </div>
@@ -47,6 +47,9 @@
         <button class="btn btn-success m-1" (click)="showContent(message.Id)">
           See content
         </button> 
+        <button class ="btn btn-secondary m-1" (click)="navigateToSendMessageComponentWithParams(message.FromBoss)">
+          Answer
+        </button>
         <button class="btn btn-danger m-1" (click)="deleteMessage(message.Id)">
           Delete
         </button>

@@ -12,6 +12,9 @@ import { ShowAvailableAgentsComponent } from './agent/show-available-agents/show
 import { ShowAgentsOnMissionComponent } from './agent/show-agents-on-mission/show-agents-on-mission.component';
 import { AgentsForSaleComponent } from './agent/agents-for-sale/agents-for-sale.component';
 import { AuthComponent } from './auth/auth.component';
+import { ShowMessageComponent } from './message/show-message/show-message.component';
+import { ShowReportsComponent } from './message/show-reports/show-reports.component';
+import { SendMessageComponent } from './message/send-message/send-message.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -25,7 +28,13 @@ const routes: Routes = [
     {path: 'agentsForSale', component: AgentsForSaleComponent},
   ]},
   {path:'boss',component:BossComponent, canActivate: [GuardService]},
-  {path:'message',component:MessageComponent, canActivate: [GuardService]},
+
+  {path:'message',component:MessageComponent, canActivate: [GuardService], children:
+  [
+    {path: 'showMessages', component: ShowMessageComponent},
+    {path: 'showReports', component: ShowReportsComponent},
+    {path: 'sendMessage', component: SendMessageComponent},
+  ]},
   {path:'auth',component: AuthComponent, canActivate: [GuardService]}
 ];
 
