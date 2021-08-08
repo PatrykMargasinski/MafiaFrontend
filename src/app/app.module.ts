@@ -31,6 +31,7 @@ import { AgentsForSaleComponent } from './agent/agents-for-sale/agents-for-sale.
 import { AuthComponent } from './auth/auth.component';
 import { ShowReportsComponent } from './message/show-reports/show-reports.component';
 import { AgentTableComponent } from './agent/agent-table/agent-table.component';
+
 export function tokenGetter(){
   return sessionStorage.getItem("jwtToken");
 }
@@ -58,6 +59,7 @@ export function tokenGetter(){
     AuthComponent,
     ShowReportsComponent,
     AgentTableComponent
+
   ],
   imports: [
     BrowserModule,

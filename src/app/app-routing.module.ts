@@ -28,6 +28,7 @@ const routes: Routes = [
     {path: 'agentsForSale', component: AgentsForSaleComponent},
   ]},
   {path:'boss',component:BossComponent, canActivate: [GuardService]},
+
   {path:'message',component:MessageComponent, canActivate: [GuardService], children:
   [
     {path: 'showMessages', component: ShowMessageComponent},
