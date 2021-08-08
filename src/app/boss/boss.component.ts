@@ -1,5 +1,6 @@
-import { Boss, BossService } from 'src/app/shared/boss.service';
+import { BossService } from 'src/app/shared/boss.service';
 import { Component, OnInit } from '@angular/core';
+import { Boss } from '../models/boss.model';
 
 @Component({
   selector: 'app-boss',

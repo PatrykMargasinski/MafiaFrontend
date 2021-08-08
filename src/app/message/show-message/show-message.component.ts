@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Message, MessageService } from 'src/app/shared/message.service';
+import { Router } from '@angular/router';
+import { Message } from 'src/app/models/message.model';
+import { MessageService } from 'src/app/shared/message.service';
 
 @Component({
   selector: 'app-show-message',
@@ -7,15 +9,13 @@ import { Message, MessageService } from 'src/app/shared/message.service';
   styleUrls: ['./show-message.component.css']
 })
 export class ShowMessageComponent implements OnInit {
-  constructor(private shared: MessageService) { }
+  constructor(private shared: MessageService, private router: Router) { }
   MessageList: Message[];
   MessageFilteredList: Message[];
   ReceiverFilterText: string = "";
   PageNumbers: number[];
   MessageIdsForActions: number[];
   OnlyUnseen:boolean = false;
-
-  @Output() swapEvent = new EventEmitter<number>();
 
   ngOnInit(): void {
     this.refreshMessageList()
@@ -29,8 +29,12 @@ export class ShowMessageComponent implements OnInit {
     return `${da}-${mo}-${ye}`
   }
 
-  showSendMessageWindow(){
-    this.swapEvent.emit();
+  navigateToSendMessageComponentWithParams(bossName: string){
+    this.router.navigate(["/message/sendMessage"], { queryParams: { bossName: bossName }});
+  }
+
+  navigateToSendMessageComponent(){
+    this.router.navigate(["/message/sendMessage"]);
   }
 
   clearFilters(){
